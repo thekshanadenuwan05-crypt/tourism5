@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King City - Discover Anuradhapura, Sri Lanka</title>
+    <meta name="description" content="Explore Anuradhapura with King City. Discover Sri Maha Bodhi, Ruwanwelisaya, Jetavanaramaya, Mihintale, culture, hotels and ancient heritage.">
+    <meta name="keywords" content="King City, Anuradhapura, Sri Lanka Tourism, Ruwanwelisaya, Sri Maha Bodhi, Jetavanaramaya, Mihintale, Ancient City">
+    <meta name="author" content="King City">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="King City - Discover Anuradhapura, Sri Lanka">
+    <meta property="og:description" content="Explore the ancient kingdom of Anuradhapura with King City">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <style>
+        :root {
+            --gold: #FFD700;
+            --gold-dark: #B8860B;
+            --gold-light: #FFF8DC;
+            --green: #0B3D2E;
+            --green-light: #1A5C47;
+            --green-dark: #062921;
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --dark: #1A1A1A;
+            --gray: #6B7280;
+            --gray-light: #E5E7EB;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        [data-theme="dark"] {
+            --white: #0A0A0A;
+            --black: #FFFFFF;
+            --dark: #F5F5F5;
+            --gray: #9CA3AF;
+            --gray-light: #1F1F1F;
+            --glass-bg: rgba(0, 0, 0, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .logo-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        .subtitle-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--white);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--green);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-crown {
+            font-size: 4rem;
+            color: var(--gold);
+            animation: pulse 2s infinite;
+            margin-bottom: 1rem;
+        }
+
+        .loader-text {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,215,0,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .loader-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gold);
+            animation: loadBar 2s ease forwards;
+        }
+
+        @keyframes loadBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(11, 61, 46, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        [data-theme="dark"] .navbar.scrolled {
+            background: rgba(6, 41, 33, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-crown {
+            font-size: 1.8rem;
+            color: var(--gold);
+            animation: floatCrown 3s ease-in-out infinite;
+        }
+
+        @keyframes floatCrown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--green);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(11,61,46,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .typing-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            min-height: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--green);
+            transform: translateY(-3px);
+            border-color: white;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 3;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .hero-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+            border-color: white;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--gold-dark);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            line-height: 1.8;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--white) 0%, rgba(11,61,46,0.03) 100%);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-glass {
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-glass h3 {
+            font-size: 1.8rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .about-glass p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,215,0,0.08);
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255,215,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            font-family: 'Cinzel', serif;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+        }
+
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            color: var(--green);
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 10px 40px rgba(255,215,0,0.3);
+        }
+
+        /* Popular Places */
+        .places {
+            background: var(--white);
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .place-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] .place-card {
+            background: #111;
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .place-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .place-card.hidden {
+            display: none;
+        }
+
+        .place-image {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .place-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .place-card:hover .place-image img {
+            transform: scale(1.15);
+        }
+
+        .place-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .place-card:hover .place-overlay {
+            opacity: 1;
+        }
+
+        .place-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+
+        .place-content {
+            padding: 1.8rem;
+        }
+
+        .place-content h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .place-content p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-learn {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.85rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold-dark);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-learn:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            border-color: transparent;
+            transform: translateX(5px);
+        }
+
+        /* Gallery Masonry */
+        .gallery {
+            background: linear-gradient(135deg, var(--white) 0%, rgba(11,61,46,0.02) 100%);
+        }
+
+        .gallery-masonry {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11,61,46,0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-title {
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--gold);
+            color: var(--green);
+        }
+
+        .lightbox-prev { left: 2rem; }
+        .lightbox-next { right: 2rem; }
+
+        /* Culture Section */
+        .culture {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture .section-title,
+        .culture .section-label {
+            color: white;
+        }
+
+        .culture .section-desc {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .culture-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .culture-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .culture-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+        }
+
+        .culture-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .culture-card p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        /* Hotels */
+        .hotels {
+            background: var(--white);
+        }
+
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .hotel-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] .hotel-card {
+            background: #111;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .hotel-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .hotel-card:hover .hotel-image img {
+            transform: scale(1.1);
+        }
+
+        .hotel-price-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+
+        .hotel-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .hotel-stars {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .hotel-body h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .hotel-location {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hotel-amenities {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            color: var(--gray);
+            background: rgba(0,0,0,0.03);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+        }
+
+        [data-theme="dark"] .amenity {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-quote {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-details span {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        /* Counter Stats */
+        .counter-section {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px;
+            opacity: 0.5;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-item {
+            text-align: center;
+            color: var(--green);
+        }
+
+        .counter-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Map */
+        .map-section {
+            padding: 0;
+            height: 450px;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, var(--white) 0%, rgba(11,61,46,0.03) 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--green);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.2));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dark);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item div h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+        }
+
+        .contact-item div p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            font-size: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] .social-btn {
+            background: #1a1a1a;
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] .contact-form-wrapper {
+            background: #111;
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .form-row {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.85rem;
+        }
+
+        .form-row input,
+        .form-row textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(255,215,0,0.1);
+        }
+
+        .form-row textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--green-dark);
+            color: white;
+            padding: 4rem 2rem 1.5rem;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+
+        /* Floating Buttons */
+        .floating-btn {
+            position: fixed;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            border: none;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        .back-to-top {
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--green);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+        }
+
+        .whatsapp-btn {
+            bottom: 2rem;
+            left: 2rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        .music-btn {
+            bottom: 6rem;
+            left: 2rem;
+            background: linear-gradient(135deg, var(--green), var(--green-light));
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-wrapper,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .gallery-masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .gallery-masonry {
+                column-count: 1;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .about-glass {
+                padding: 2rem;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-crown">👑</div>
+        <div class="loader-text">KING CITY</div>
+        <div class="loader-bar">
+            <div class="loader-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
+        <img src="" alt="Gallery" id="lightboxImg">
+        <button class="lightbox-nav lightbox-next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="#places" onclick="closeMobileMenu()">Places</a></li>
+            <li><a href="#gallery" onclick="closeMobileMenu()">Gallery</a></li>
+            <li><a href="#culture" onclick="closeMobileMenu()">Culture</a></li>
+            <li><a href="#hotels" onclick="closeMobileMenu()">Hotels</a></li>
+            <li><a href="#testimonials" onclick="closeMobileMenu()">Reviews</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-crown">👑</span>
+                <div>
+                    <div class="logo-text">KING CITY</div>
+                    <div class="logo-sub">Discover Anuradhapura</div>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#places">Places</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#culture">Culture</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('https://kimi-web-img.moonshot.cn/img/www.trawell.in/aa9a9a984a7c19e0112b9790ce86a7e018298923.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://kimi-web-img.moonshot.cn/img/www.andbeyond.com/e2831405657a3c52a895fb712225947c06cfade9.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://kimi-web-img.moonshot.cn/img/tropicallifedambulla.com/4d14994eb7e178d543578f813818ea19906c3cab.jpg');"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-landmark"></i> UNESCO World Heritage
+            </div>
+            <h1 class="hero-title">KING CITY</h1>
+            <p class="typing-text subtitle-font" id="typingText"></p>
+            <div class="hero-buttons">
+                <a href="#places" class="btn btn-gold">
+                    <i class="fas fa-map-marked-alt"></i> Explore Places
+                </a>
+                <a href="#gallery" class="btn btn-outline">
+                    <i class="fas fa-images"></i> View Gallery
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-dots">
+            <div class="hero-dot active" onclick="goToSlide(0)"></div>
+            <div class="hero-dot" onclick="goToSlide(1)"></div>
+            <div class="hero-dot" onclick="goToSlide(2)"></div>
+        </div>
+        
+        <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-chevron-down fa-lg"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Our Heritage</span>
+                <h2 class="section-title">About Anuradhapura</h2>
+                <p class="section-desc">The sacred ancient capital that shaped the soul of Sri Lanka for millennia.</p>
+            </div>
+            
+            <div class="about-wrapper">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/3364f9cf9bbe0c236ed088b98aaf8229f0d2784e.jpg" alt="Anuradhapura Ancient City">
+                </div>
+                
+                <div class="about-glass glass-card" data-aos="fade-left">
+                    <h3>Ancient Kingdom of Glory</h3>
+                    <p>Founded in the 4th century BCE, Anuradhapura was the first capital of Sri Lanka and the center of Sinhalese Buddhist civilization for over 1,300 years. A city of grand palaces, monasteries, and magnificent stupas.</p>
+                    <p>When the Bodhi Tree sapling arrived in the 3rd century BCE, this city became the spiritual heart of the island. The Jaya Sri Maha Bodhi still stands today — the oldest tree planted by human hands.</p>
+                    
+                    <div class="stats-container">
+                        <div class="stat-box" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="stat-number" data-count="2000">0</div>
+                            <div class="stat-label">Years History</div>
+                        </div>
+                        <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="stat-number" data-count="1300">0</div>
+                            <div class="stat-label">Years Capital</div>
+                        </div>
+                        <div class="stat-box" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="stat-number">UNESCO</div>
+                            <div class="stat-label">World Heritage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search places, temples, hotels..." onkeyup="filterPlaces()">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Places -->
+    <section class="places" id="places">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Must Visit</span>
+                <h2 class="section-title">Popular Places</h2>
+                <p class="section-desc">Explore the most sacred and magnificent sites of the ancient kingdom.</p>
+            </div>
+            
+            <div class="places-grid" id="placesGrid">
+                <!-- Sri Maha Bodhi -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100" data-name="sri maha bodhi bodhi tree sacred">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.andbeyond.com/e2831405657a3c52a895fb712225947c06cfade9.jpg" alt="Sri Maha Bodhi">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-star"></i> Sacred</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Sri Maha Bodhi</h3>
+                        <p>The oldest documented tree on earth, a direct descendant of the Bodhi Tree under which Buddha attained enlightenment. Planted over 2,300 years ago.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Ruwanwelisaya -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200" data-name="ruwanwelisaya stupa white dagoba">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.trawell.in/aa9a9a984a7c19e0112b9790ce86a7e018298923.jpg" alt="Ruwanwelisaya">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-crown"></i> Iconic</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Ruwanwelisaya</h3>
+                        <p>Built by King Dutugemunu in 140 BC, this magnificent white stupa rises 103 meters high. Guarded by 344 elephant statues, it enshrines sacred relics.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Jetavanaramaya -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300" data-name="jetavanaramaya jetavana stupa brick">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/tropicallifedambulla.com/4d14994eb7e178d543578f813818ea19906c3cab.jpg" alt="Jetavanaramaya">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-history"></i> Historic</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Jetavanaramaya</h3>
+                        <p>Once the tallest brick structure in the ancient world at 122 meters. Built in the 3rd century CE by King Mahasena, dominating the skyline for centuries.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Isurumuniya -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="100" data-name="isurumuniya temple rock carving lovers">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/da00121dcb4d2c9ec27a414409c65a4854468082.jpg" alt="Isurumuniya Temple">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-gem"></i> Ancient</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Isurumuniya Temple</h3>
+                        <p>Built into rock in the 3rd century BC, featuring the famous Isurumuniya Lovers carving and the oldest visible pagoda in the world.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Abhayagiri -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="200" data-name="abhayagiri stupa monastery">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/7a99d03f732d58ea42300252c488c8ae6c72de12.jpg" alt="Abhayagiri Stupa">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-om"></i> Monastic</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Abhayagiri Stupa</h3>
+                        <p>The centerpiece of a 5,000-monk monastery, this dagoba originally stood 100 meters high. A major center of Buddhist learning attracting scholars from across Asia.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Mihintale -->
+                <div class="place-card" data-aos="fade-up" data-aos-delay="300" data-name="mihintale mountain buddhism pilgrimage">
+                    <div class="place-image">
+                        <img src="https://kimi-web-img.moonshot.cn/img/d1bv4heaa2n05k.cloudfront.net/cc68f895e37839c6d7c6a93a0ed4484b360f2f36.jpeg" alt="Mihintale">
+                        <div class="place-overlay"></div>
+                        <span class="place-badge"><i class="fas fa-mountain"></i> Pilgrimage</span>
+                    </div>
+                    <div class="place-content">
+                        <h3>Mihintale</h3>
+                        <p>The cradle of Buddhism in Sri Lanka. Where Arahath Mahinda Thero preached to King Devanampiyatissa in 236 BC. Climb 1,840 steps for panoramic views.</p>
+                        <a href="#" class="btn-learn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Visual Journey</span>
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-desc">Capturing the timeless beauty of Anuradhapura through the lens.</p>
+            </div>
+            
+            <div class="gallery-masonry">
+                <div class="gallery-item" onclick="openLightbox(0)" data-aos="fade-up">
+                    <img src="https://kimi-web-img.moonshot.cn/img/besttimetovisitsrilanka.com/729852ed5ddde0729ff3fd0c97c5c376c957b398.jpg" alt="Sunset Stupa">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Sunset over Sacred City</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.historyhit.com/73f7e137edac0157995167aa9c62f5a470239355.jpg" alt="Sri Maha Bodhi">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Jaya Sri Maha Bodhi</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.trawell.in/aa9a9a984a7c19e0112b9790ce86a7e018298923.jpg" alt="Ruwanwelisaya">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Ruwanwelisaya Glory</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)" data-aos="fade-up">
+                    <img src="https://kimi-web-img.moonshot.cn/img/tropicallifedambulla.com/4d14994eb7e178d543578f813818ea19906c3cab.jpg" alt="Jetavanaramaya">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Jetavanaramaya Stupa</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/7a99d03f732d58ea42300252c488c8ae6c72de12.jpg" alt="Abhayagiri">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Abhayagiri Monastery</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(5)" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/da00121dcb4d2c9ec27a414409c65a4854468082.jpg" alt="Isurumuniya">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-title">Isurumuniya Temple</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(6)" data-aos="fade-up">
+                    <img src="https://kimi-web-img.moonshot.cn/img/d1bv4heaa2n05k.cloudfront.net/cc68f895e37839c6d7c6a93a0ed4484b
