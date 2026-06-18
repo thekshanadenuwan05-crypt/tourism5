@@ -1831,7 +1831,12 @@
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
-        }
+        .loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
     </style>
 </head>
 <body>
@@ -1840,12 +1845,14 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="loader-crown">👑</div>
-        <div class="loader-text">KING CITY</div>
-        <div class="loader-bar">
-            <div class="loader-bar-fill"></div>
-        </div>
+    <div class="loader" onclick="this.classList.add('hidden')" style="cursor: pointer;">
+    <div class="loader-crown">👑</div>
+    <div class="loader-text">KING CITY</div>
+    <div class="loader-bar">
+        <div class="loader-bar-fill"></div>
+    </div>
+    <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 10px;">Click to Explore</span>
+</div>
     </div>
 
     <!-- Particles -->
@@ -2138,3 +2145,16 @@
                 </div>
                 <div class="gallery-item" onclick="openLightbox(6)" data-aos="fade-up">
                     <img src="https://kimi-web-img.moonshot.cn/img/d1bv4heaa2n05k.cloudfront.net/cc68f895e37839c6d7c6a93a0ed4484b
+                        </div>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                }, 3000); // තත්පර 3කින් ඉබේම Hidden වේ
+            }
+        });
+    </script>
+</body>
+</html>
